@@ -1,0 +1,47 @@
+wget -O ng.sh https://github.com/kmille36/Docker-Ubuntu-Desktop-NoMachine/raw/main/ngrok.sh > /dev/null 2>&1
+chmod +x ng.sh
+./ng.sh
+
+
+fungsi kebagian
+{
+    label=$1
+    CD
+    cmd=$(sed -n "/^:[[:blank:]][[:blank:]]*${label}/{:a;n;p;ba};" $0 |
+          grep -v ':$')
+    evaluasi "$cmd"
+    KELUAR
+}
+
+: ngrok
+jernih
+gema "Buka: https://dashboard.ngrok.com/get-started/your-authtoken"
+baca -p "Tempel Ngrok Authtoken:" CRP
+./ngrok authtoken $CRP
+
+jernih
+gema "Repo: https://github.com/kmille36/Docker-Ubuntu-Desktop-NoMachine"
+gema "=========="
+echo "pilih wilayah ngrok (agar koneksi lebih baik)."
+gema "=========="
+gema "kami - Amerika Serikat (Ohio)"
+gema "eu - Eropa (Frankfurt)"
+echo "ap - Asia/Pasifik (Singapura)"
+gema "au - Australia (Sydney)"
+gema "sa - Amerika Selatan (Sao Paulo)"
+gema "jp - Jepang (Tokyo)"
+gema "di - India (Mumbai)"
+baca -p "pilih wilayah ngrok :" CRP
+./ngrok tcp --wilayah $CRP 4000 &>/dev/null &
+tidur 1
+jika curl --silent --show-error http://127.0.0.1:4040/api/tunnels > /dev/null 2>&1; lalu gema OK; else echo "Ngrok Error! Silakan coba lagi!" && tidur 1 && kebagian ngrok; fi
+menjalankan buruh pelabuhan --rm -d --host jaringan --istimewa --nama nomachine-xfce4 -e PASSWORD=123456 -e USER=pengguna --cap-add=SYS_PTRACE --shm-size=1g thuonghai2711/nomachine-ubuntu- desktop:windows10
+jernih
+gema "NoMachine: https://www.nomachine.com/download"
+gema Selesai! Informasi Tanpa Mesin:
+gema Alamat IP:
+curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'
+gema Pengguna: pengguna
+gema Kata Sandi: 123456
+echo "VM tidak dapat terhubung? Mulai ulang Cloud Shell lalu jalankan kembali skrip."
+bagian 1 43200 | saat membaca saya; do echo -en "\r Berjalan . $is /43200 s";sleep 0.1;echo -en "\r Berjalan .. $is /43200 s";sleep 0.1;echo -en "\r Berjalan ... $is /43200 s";sleep 0.1;echo -en "\r Running .... $is /43200 s";sleep 0.1;echo -en "\r Running ..... $is /43200 s";sleep 0.1 ;echo -en "\r Berjalan . $is /43200 s";sleep 0.1;echo -en "\r Berjalan .... $is /43200 s";sleep 0.1;echo -en "\r Berjalan ... $is /43200 s";sleep 0.1;echo -en "\r Running .. $is /43200 s";sleep 0.1;echo -en "\r Running . $is /43200 s";sleep 0.1; Selesai
